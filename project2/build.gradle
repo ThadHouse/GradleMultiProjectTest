@@ -1,0 +1,16 @@
+apply plugin: 'java'
+
+evaluationDependsOn(':project1')
+
+model {
+    tasks {
+        customTask2(Task) {
+            def pj = project(':project1').tasks.getByPath('customTask1')
+            dependsOn pj
+            doLast {
+                println 'custom task 2'
+            }
+        }
+        build.dependsOn customTask2
+    }
+}

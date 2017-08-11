@@ -1,0 +1,12 @@
+apply plugin: 'java'
+
+model {
+    tasks {
+        customTask1(Task) {
+            doLast {
+                println 'custom task 1'
+            }
+        }
+        build.dependsOn customTask1
+    }
+}
